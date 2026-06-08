@@ -1,0 +1,212 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Pig Game</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: Arial, sans-serif;
+            background: linear-gradient(135deg, #1a6fc4 20%, #a8d4f5 60%, #1a6fc4 100%);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+        }
+
+        .game {
+            width: 55vw;
+            background: transparent;
+            border-radius: 20px;
+            box-shadow: none;
+            padding: 30px;
+            text-align: center;
+            height: 75vh;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+        }
+
+        .players {
+            display: flex;
+            justify-content: space-between;
+            border: 2px solid #b5d4f4;
+            border-radius: 15px;
+            align-items: center;
+            gap: 20px;
+            height: 80%;
+            width: 100%;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .player {
+            height: 100%;
+            flex: 1;
+            background: rgba(30, 100, 180, 0.25);
+            padding: 20px;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+            transition: background 0.4s;
+            opacity: 0.5;
+        }
+
+        .player h2 {
+            margin-bottom: 15px;
+        }
+
+        .score-main {
+            height: 50%;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .score {
+            font-size: 3rem;
+            font-weight: bold;
+            color: #185fa5;
+        }
+
+        .current-score-main {
+            height: 35%;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            background: #185fa5;
+            color: white;
+            border-radius: 10px;
+            padding: 10px;
+        }
+
+        .current-score {
+            font-size: 1.5rem;
+            font-weight: bold;
+        }
+
+        .dice {
+            position: absolute;
+            top: 40%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            height: 100px;
+            width: 100px;
+            border: 2px solid #b5d4f4;
+            border-radius: 10px;
+            background: rgba(255, 255, 255, 0.15);
+            box-shadow: none;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 15px;
+            z-index: 5;
+        }
+
+        .dice img {
+            max-height: 100%;
+            max-width: 100%;
+            object-fit: contain;
+        }
+
+        .controls {
+            display: flex;
+            justify-content: center;
+            gap: 15px;
+            height: 15%;
+            align-items: center;
+        }
+
+        button {
+            border: none;
+            padding: 12px 24px;
+            font-size: 1rem;
+            border-radius: 10px;
+            cursor: pointer;
+            background: #185fa5;
+            color: white;
+            transition: 0.3s;
+            font-weight: bold;
+        }
+
+        button:hover {
+            transform: translateY(-2px);
+            background: #0c447c;
+        }
+
+        #reset {
+            background: #6c757d;
+        }
+
+        #reset:hover {
+            background: #5a6268;
+        }
+
+        .active {
+            background: rgba(100, 180, 255, 0.45);
+            opacity: 1;
+        }
+
+        .active .current-score-main {
+            background: #378add;
+            opacity: 1;
+
+        }
+
+        .active .current-score {
+            font-size: 2.75rem;
+        }
+    </style>
+</head>
+
+<body>
+
+    <div class="game">
+        <div class="players">
+            <div class="player active" id="player1">
+                <div class="score-main">
+                    <h2>Player 1</h2>
+                    <div class="score">0</div>
+                </div>
+                <div class="current-score-main">
+                    <p>CURRENT SCORE</p>
+                    <div class="current-score">0</div>
+                </div>
+            </div>
+
+            <div class="dice">
+                <img id="diceImg" src="assets/dice_1.png" alt="Dice">
+            </div>
+
+            <div class="player" id="player2">
+                <div class="score-main">
+                    <h2>Player 2</h2>
+                    <div class="score">0</div>
+                </div>
+                <div class="current-score-main">
+                    <p>CURRENT SCORE</p>
+                    <div class="current-score">0</div>
+                </div>
+            </div>
+        </div>
+
+        <div class="controls">
+            <button id="diceBtn">🎲 Roll Dice</button>
+            <button id="holdBtn">✋ Hold</button>
+            <button id="reset">🔄 Reset</button>
+        </div>
+    </div>
+
+    <script src="main.js"></script>
+</body>
+
+</html>
